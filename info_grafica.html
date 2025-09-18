@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Il Taccuino di Italiano: Il Tuo Laboratorio Personale</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 450px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .flow-arrow {
+            font-size: 2rem;
+            color: #FFD166;
+            line-height: 1;
+        }
+        .card {
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            padding: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.1);
+        }
+    </style>
+</head>
+<body class="text-[#073B4C]">
+
+    <div class="container mx-auto p-4 md:p-8">
+
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-6xl font-black text-[#118AB2] uppercase tracking-wider">Il Tuo Taccuino di Italiano</h1>
+            <p class="text-lg md:text-xl mt-4 max-w-3xl mx-auto">Più di un quaderno, un laboratorio personale per allenare il pensiero, la lettura e la scrittura.</p>
+        </header>
+
+        <main class="space-y-16">
+
+            <section id="sections">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold text-[#06D6A0]">Le 5 Aree del Tuo Laboratorio</h2>
+                    <p class="mt-2 text-md">Ogni sezione del taccuino ha uno scopo preciso, come le stanze di un laboratorio. Scopri come usarle per potenziare il tuo apprendimento.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                    <div class="card lg:col-span-1">
+                        <h3 class="text-xl font-bold mb-2">🗺️ La Sala delle Mappe</h3>
+                        <p class="text-sm mb-4">È il tuo centro di orientamento visivo. Qui costruisci mappe per avere una visione d'insieme chiara e interconnessa degli argomenti.</p>
+                        <div class="chart-container">
+                            <canvas id="mapsChart"></canvas>
+                        </div>
+                        <p class="text-xs mt-2 text-center">Un radar per visualizzare l'equilibrio tra i diversi ambiti di studio, collegando tutto in un'unica visione.</p>
+                    </div>
+
+                    <div class="card lg:col-span-1">
+                        <h3 class="text-xl font-bold mb-2">📖 Il Diario di Bordo</h3>
+                        <p class="text-sm mb-4">Questo è lo spazio per il dialogo intimo e personale con i testi. Non un riassunto, ma una conversazione con le opere che leggi.</p>
+                        <div class="text-center my-auto p-4 bg-blue-50 rounded-lg">
+                            <p class="text-6xl">💬</p>
+                            <p class="mt-4 font-bold text-[#118AB2]">"Una frase mi ha colpito perché..."</p>
+                            <p class="text-sm mt-2">Annota riflessioni, domande ed emozioni per sviluppare il tuo pensiero critico e il tuo gusto personale.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card lg:col-span-1">
+                        <h3 class="text-xl font-bold mb-2">🔬 Grammatica Forense</h3>
+                        <p class="text-sm mb-4">Come un detective, qui "sezioni" i testi per scoprire come funzionano. Analizzi la struttura, lo stile e le scelte dell'autore per leggere sotto la superficie.</p>
+                         <div class="space-y-2 mt-auto text-center">
+                            <div class="p-2 bg-gray-100 rounded-lg text-sm font-semibold">Testo Originale</div>
+                            <div class="text-2xl text-[#FFD166]">&#11015;</div>
+                            <div class="p-2 bg-gray-100 rounded-lg text-sm font-semibold">Analisi Sintassi</div>
+                             <div class="text-2xl text-[#FFD166]">&#11015;</div>
+                            <div class="p-2 bg-gray-100 rounded-lg text-sm font-semibold">Analisi Verbi & Punteggiatura</div>
+                             <div class="text-2xl text-[#FFD166]">&#11015;</div>
+                             <div class="p-2 bg-[#06D6A0] text-white rounded-lg text-sm font-bold">Stile dell'Autore Rivelato</div>
+                        </div>
+                    </div>
+
+                    <div class="card md:col-span-2 lg:col-span-2">
+                        <h3 class="text-xl font-bold mb-2">✍️ L'Officina della Scrittura</h3>
+                        <p class="text-sm mb-4">Questa è la tua palestra personale. Qui ti alleni a scrivere testi complessi, dal brainstorming alla stesura finale, passando per bozze e correzioni. È lo spazio per sperimentare e migliorare.</p>
+                        <div class="chart-container h-64 md:h-80">
+                            <canvas id="writingChart"></canvas>
+                        </div>
+                        <p class="text-xs mt-2 text-center">Un grafico che mostra come il processo di scrittura sia distribuito tra progettazione, stesura e una fondamentale revisione.</p>
+                    </div>
+
+                    <div class="card lg:col-span-1">
+                        <h3 class="text-xl font-bold mb-2">🛠️ La Cassetta degli Attrezzi</h3>
+                        <p class="text-sm mb-4">Il tuo prontuario personale, da consultare rapidamente. Contiene le regole, le definizioni e gli strumenti che ti servono durante lo studio e la scrittura.</p>
+                        <ul class="space-y-3 mt-auto text-sm">
+                            <li class="flex items-start"><span class="text-xl mr-3">📖</span> <div><span class="font-bold">Regole Grammaticali:</span> I dubbi più comuni, spiegati in modo semplice.</div></li>
+                            <li class="flex items-start"><span class="text-xl mr-3">🎨</span> <div><span class="font-bold">Figure Retoriche:</span> Un elenco con definizioni ed esempi chiari.</div></li>
+                            <li class="flex items-start"><span class="text-xl mr-3">🔗</span> <div><span class="font-bold">Connettivi Logici:</span> La lista segreta per rendere i tuoi temi più efficaci e argomentati.</div></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </section>
+
+            <section id="impact">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold text-[#EF476F]">L'Impatto sul Tuo Apprendimento</h2>
+                    <p class="mt-2 text-md">Utilizzare il taccuino in modo attivo trasforma il tuo modo di studiare, potenziando le abilità chiave per il successo.</p>
+                </div>
+                <div class="card max-w-4xl mx-auto">
+                    <h3 class="text-xl font-bold text-center mb-4">Studio Passivo vs. Apprendimento Attivo</h3>
+                    <p class="text-center mb-4 text-sm">A differenza dello studio tradizionale, basato sulla memorizzazione, il metodo del taccuino potenzia le competenze di rielaborazione e pensiero critico, garantendo una comprensione più profonda e duratura.</p>
+                    <div class="chart-container" style="max-width: 800px; height: 350px;">
+                         <canvas id="impactChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="text-center mt-16 pt-8 border-t-2 border-[#118AB2]">
+            <h2 class="text-3xl font-black text-[#06D6A0]">IL TUO LABORATORIO È PRONTO.</h2>
+            <p class="mt-4 text-lg">Inizia a costruire il tuo taccuino e trasforma ogni pagina in un'opportunità di crescita.</p>
+            <p class="mt-8 text-lg font-bold">Buon lavoro!</p>
+        </footer>
+
+    </div>
+
+    <script>
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            }
+            return label;
+        };
+        
+        const wrapLabel = (label) => {
+            const maxLength = 16;
+            if (label.length <= maxLength) return label;
+            
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+
+            words.forEach(word => {
+                if ((currentLine + word).length > maxLength) {
+                    lines.push(currentLine.trim());
+                    currentLine = '';
+                }
+                currentLine += word + ' ';
+            });
+            lines.push(currentLine.trim());
+            return lines;
+        };
+
+        const colors = {
+            red: '#EF476F',
+            yellow: '#FFD166',
+            green: '#06D6A0',
+            blue: '#118AB2',
+            darkBlue: '#073B4C'
+        };
+
+        const mapsCtx = document.getElementById('mapsChart').getContext('2d');
+        const originalMapLabels = ['Autori & Opere', 'Generi Letterari', 'Grammatica', 'Contesti Storici'];
+        
+        new Chart(mapsCtx, {
+            type: 'radar',
+            data: {
+                labels: originalMapLabels.map(wrapLabel),
+                datasets: [{
+                    label: 'Ambiti di Studio',
+                    data: [90, 80, 75, 85],
+                    backgroundColor: 'rgba(6, 214, 160, 0.2)',
+                    borderColor: colors.green,
+                    pointBackgroundColor: colors.green,
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: colors.green
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                scales: {
+                    r: {
+                        angleLines: { color: 'rgba(7, 59, 76, 0.2)' },
+                        grid: { color: 'rgba(7, 59, 76, 0.2)' },
+                        pointLabels: { 
+                            font: { size: 11 },
+                            color: colors.darkBlue
+                        },
+                        ticks: {
+                            backdropColor: 'rgba(255, 255, 255, 0)',
+                            color: 'rgba(255, 255, 255, 0)',
+                            stepSize: 20
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: { title: tooltipTitleCallback }
+                    }
+                }
+            }
+        });
+
+        const writingCtx = document.getElementById('writingChart').getContext('2d');
+        const originalWritingLabels = ['Progettazione & Brainstorming', 'Scrittura (Bozza)', 'Revisione & Correzione'];
+
+        new Chart(writingCtx, {
+            type: 'doughnut',
+            data: {
+                labels: originalWritingLabels.map(wrapLabel),
+                datasets: [{
+                    label: 'Fasi della Scrittura',
+                    data: [25, 40, 35],
+                    backgroundColor: [colors.yellow, colors.blue, colors.red],
+                    borderColor: '#ffffff',
+                    borderWidth: 4,
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { color: colors.darkBlue, font: {size: 10} }
+                    },
+                    tooltip: {
+                        callbacks: { title: tooltipTitleCallback }
+                    }
+                }
+            }
+        });
+        
+        const impactCtx = document.getElementById('impactChart').getContext('2d');
+        const originalImpactLabels = ['Pensiero Critico', 'Creatività', 'Memorizzazione', ['Organizzazione &', 'Sintesi']];
+        
+        new Chart(impactCtx, {
+            type: 'bar',
+            data: {
+                labels: originalImpactLabels,
+                datasets: [
+                    {
+                        label: 'Studio Passivo',
+                        data: [40, 30, 85, 50],
+                        backgroundColor: colors.yellow,
+                        borderColor: colors.yellow,
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Apprendimento Attivo (con Taccuino)',
+                        data: [90, 85, 70, 95],
+                        backgroundColor: colors.blue,
+                        borderColor: colors.blue,
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                indexAxis: 'y',
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        grid: { display: false },
+                        ticks: { color: colors.darkBlue }
+                    },
+                    y: {
+                        grid: { color: 'rgba(7, 59, 76, 0.1)' },
+                        ticks: { color: colors.darkBlue, font: {size: 12} }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: { color: colors.darkBlue }
+                    },
+                    tooltip: {
+                        callbacks: { title: tooltipTitleCallback }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
